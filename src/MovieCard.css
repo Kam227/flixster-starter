@@ -1,0 +1,47 @@
+.movie-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 1px #888888;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 3px #888888;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.rating {
+    background-color: black;
+    color: white;
+    width: 40%;
+    min-width: 30px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+
+.favorited {
+    display: flex;
+    margin-top: -15px;
+    justify-content: end;
+}
+
+.watched {
+    display: flex;
+    justify-content: end;
+    margin-top: -38px;
+    margin-right: 20px;
+}
