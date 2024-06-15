@@ -62,7 +62,7 @@ body.no-scroll {
 
 .modal-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 500px;
     height: auto;
     margin: 0 auto 10px auto;
 }
