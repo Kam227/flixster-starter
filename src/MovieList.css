@@ -26,6 +26,8 @@ body.no-scroll {
     text-align: center;
     border: 1px solid black;
     border-radius: 20px;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 .modal-main {
@@ -79,15 +81,16 @@ body.no-scroll {
     justify-content: end;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .modal {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
         height: 100%;
-        top: 0;
-        transform: translateX(-50%);
+        max-height: 100%;
         border-radius: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        overflow-y: auto;
     }
 }
 
@@ -96,7 +99,7 @@ body.no-scroll {
     justify-content: space-between;
     background-color: #282c34;
     padding: 10px;
-    width: 100%
+    width: 100%;
 }
 
 .header-bottom input {
@@ -158,7 +161,7 @@ button:hover {
 }
 
 .sidebar-image {
-    width: 30%
+    width: 30%;
 }
 
 .sidebar-title {
