@@ -45,7 +45,7 @@ Deployed Application (optional): [https://flixster-1eaa.onrender.com/](ADD_LINK_
 
 ### Walkthrough Video
 
-`https://drive.google.com/file/d/1Dn69Y1KSKanyV7gcjdm4yaFZeWtVtqkU/view?usp=sharing`
+`https://drive.google.com/file/d/1iOgKjedrTrvzIdGOB9YX2UFqGIsertJR/view?usp=sharing`
 
 ### Reflection
 
