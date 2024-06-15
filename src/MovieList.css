@@ -31,9 +31,10 @@ body.no-scroll {
 .modal-main {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
+
 .modal-left {
-    margin-left: 40px;
     width: 100%;
     align-items: center;
 }
@@ -51,8 +52,8 @@ body.no-scroll {
 }
 
 .modal-right p {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .modal p {
@@ -61,7 +62,8 @@ body.no-scroll {
 
 .modal-image {
     width: 100%;
-    max-width: 150px;
+    max-width: 100%;
+    height: auto;
     margin: 0 auto 10px auto;
 }
 
@@ -75,6 +77,18 @@ body.no-scroll {
 .modal-close {
     display: flex;
     justify-content: end;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        height: 100%;
+        top: 0;
+        transform: translateX(-50%);
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 .header-bottom {

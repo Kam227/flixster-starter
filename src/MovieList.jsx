@@ -9,6 +9,7 @@ const MovieList = () => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [movieRuntime, setMovieRuntime] = useState(null);
     const [isSearching, setIsSearching] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -75,6 +76,21 @@ const MovieList = () => {
         }
     }
 
+    const fetchRuntime = async (id) => {
+        try {
+            const apiKey = import.meta.env.VITE_API_KEY;
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch runtime');
+            }
+            const data = await response.json();
+            setMovieRuntime(data.runtime);
+        } catch (error) {
+            console.error(error);
+            setMovieRuntime(null);
+        }
+    }
+
     const videoData = async (id) => {
         try {
             const apiKey = import.meta.env.VITE_API_KEY;
@@ -118,11 +134,14 @@ const MovieList = () => {
         } else {
             setTrailerUrl('');
         }
+
+        await fetchRuntime(id);
     }
 
     const closeModal = () => {
         setSelectedMovie(null);
         setTrailerUrl('');
+        setMovieRuntime(null);
     }
 
     const GENRE_TO_ID = {
@@ -170,10 +189,6 @@ const MovieList = () => {
                 movie,
             ])
         }
-    }
-
-    const removeFavoriteList = (id) => {
-        const movie = (isSearching ? searchResults : (isFiltering ? selectedGenre : movies)).find(movie => movie.id == id);
     }
 
     const handleWatchlist = (id) => {
@@ -293,11 +308,12 @@ const MovieList = () => {
                     <div className="modal-close" onClick={closeModal}><IoMdCloseCircle /></div>
                     <div className="modal-main">
                         <div className="modal-left">
-                            <img className="modal-image" src={selectedMovie.backdrop_path == null ? "thonk.jpg" : "https://image.tmdb.org/t/p/w1280" + selectedMovie.poster_path } alt="No movie image" />
+                            <img className="modal-image" src={selectedMovie.backdrop_path == null ? "thonk.jpg" : "https://image.tmdb.org/t/p/w1280" + selectedMovie.backdrop_path } alt="No movie image" />
                             <div>
                                 <p className="modal-title">{selectedMovie.title}</p>
                                 <p>Release Date: {selectedMovie.release_date}</p>
                                 <p>Popularity Rating: {selectedMovie.popularity}</p>
+                                {movieRuntime !== null && <p>Runtime: {movieRuntime} minutes</p>}
                             </div>
                         </div>
                         <div className="modal-right">
